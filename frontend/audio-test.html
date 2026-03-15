@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Audio Test</title>
+</head>
+
+<body>
+    <h1>Audio Playback Test</h1>
+    <button onclick="testAudio()">Test Audio Playback</button>
+    <p id="status"></p>
+    <audio id="player" controls></audio>
+
+    <script>
+        async function testAudio() {
+            const status = document.getElementById('status');
+            const player = document.getElementById('player');
+
+            // Get the latest audio file
+            const audioFiles = [
+                'd4bd4e9e-f0e2-487c-afab-28d69552f300.mp3',
+                'c4ace274-c02b-4c95-9345-aba4f5f509cb.mp3'
+            ];
+
+            const audioUrl = `http://localhost:8000/audio/${audioFiles[0]}`;
+            status.textContent = `Testing: ${audioUrl}`;
+
+            player.src = audioUrl;
+
+            try {
+                await player.play();
+                status.textContent = '✅ Audio playing!';
+            } catch (err) {
+                status.textContent = `❌ Error: ${err.message}`;
+                console.error(err);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Assistant | AI Receptionist</title>
+    <link rel="stylesheet" href="src/css/landing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+            <span>RAG Assistant</span>
+        </div>
+        <div class="nav-actions">
+            <span id="userDisplay" style="color: var(--text-dim); font-size: 0.9rem; margin-right: 15px;"></span>
+            <button class="get-started" id="logoutBtn" style="display: none;">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Login Overlay -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-card">
+            <h2>Welcome back</h2>
+            <p>Enter your username to access your AI Assistant</p>
+            <input type="text" id="usernameInput" placeholder="Username" class="login-input">
+            <button id="loginBtn" class="login-submit">Continue</button>
+        </div>
+    </div>
+
+    <main class="app-container">
+        <header class="hero">
+            <h1>Try the Assistant</h1>
+            <p>Ask anything from your knowledge base</p>
+        </header>
+
+        <section class="avatar-section">
+            <div class="avatar-circle">
+                <img src="src/images/receptionist-avatar.png" alt="AI Agent" id="avatarImage">
+                <div class="status-label">
+                    <span class="dot"></span>
+                    Online
+                </div>
+            </div>
+        </section>
+
+        <section class="action-box">
+            <button class="speak-btn" id="speakBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                </svg>
+                <span>SPEAK TO AN ASSISTANT</span>
+            </button>
+
+            <div class="visual" id="visualizer">
+                <div class="v-bar"></div>
+                <div class="v-bar"></div>
+                <div class="v-bar"></div>
+                <div class="v-bar"></div>
+                <div class="v-bar"></div>
+                <div class="v-bar"></div>
+                <div class="v-bar"></div>
+                <div class="v-bar"></div>
+                <div class="v-bar"></div>
+                <div class="v-bar"></div>
+            </div>
+        </section>
+
+        <!-- Chat Container: Now Always Visible -->
+        <section class="chat-window">
+            <div class="message-area" id="messageHistory">
+                <!-- Messages will appear here -->
+                <div class="start-hint" id="startHint">Start a conversation by typing below...</div>
+            </div>
+            <div class="input-row">
+                <input type="text" id="chatInput" placeholder="Type your message..." class="input-field">
+                <button class="send-icon" id="sendBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="f-card">
+                <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                    </svg></div>
+                <h3>Instant</h3>
+                <p>Responses</p>
+            </div>
+            <div class="f-card">
+                <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg></div>
+                <h3>Secure</h3>
+                <p>& Private</p>
+            </div>
+            <div class="f-card">
+                <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg></div>
+                <h3>RAG</h3>
+                <p>Powered</p>
+            </div>
+        </section>
+
+        <div class="admin-trigger" id="adminToggle">Admin Knowledge Base</div>
+        <div class="admin-pane" id="adminContent" style="display: none;">
+            <input type="file" id="knowledgeUpload" accept=".pdf,.txt,.docx,.md"
+                style="margin-bottom: 20px; display: block;">
+            <button class="get-started" id="uploadBtn">Upload Documents</button>
+            <div id="uploadStatus" style="margin-top: 15px; font-size: 0.9rem;"></div>
+        </div>
+    </main>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+    <script src="src/js/landing.js"></script>
+</body>
+
+</html>
